@@ -10,7 +10,8 @@ class Blog extends Component {
 
 
     state = {
-        posts:[]
+        posts:[],
+        postid:null
     };
 
     componentDidMount(){
@@ -30,12 +31,20 @@ class Blog extends Component {
 
     }
 
+    onPostSelectionHandler = (post_id) => {
+        
+        console.log('Post slected',post_id);
+        this.setState({postid:post_id});
+
+    }
+
     render () {
 
         let posts = this.state.posts.map(post=><Post 
             title={post.title}
             author={post.author}
-            key={post.id} 
+            key={post.id}
+            clicked={()=>{this.onPostSelectionHandler(post.id)}}
             />);
 
         return (
@@ -44,7 +53,7 @@ class Blog extends Component {
                     {!posts.length?<span style={{color:'#ccc',margin:'20px'}} >Loading Post ...</span>:posts}
                 </section>
                 <section>
-                    <FullPost />
+                    <FullPost postid={this.state.postid} />
                 </section>
                 <section>
                     <NewPost />
