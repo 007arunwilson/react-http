@@ -11,12 +11,13 @@ class Blog extends Component {
 
     state = {
         posts:[],
-        postid:null
+        postid:null,
+        error:false,
     };
 
     componentDidMount(){
-        
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+
+        axios.get('https://jsonplaceholder.typicode.com/postssss')
         .then(response=>{
             console.log(response.data);
             let resposne_data = response.data;
@@ -25,6 +26,11 @@ class Blog extends Component {
                 return {...post,author:'Max Corner'};
             })
             this.setState({posts:updated_posts});
+
+        })
+        .catch(error=>{
+
+            this.setState({error:true})
 
         })
 
@@ -39,6 +45,8 @@ class Blog extends Component {
 
     render () {
 
+        
+
         let posts = this.state.posts.map(post=><Post 
             title={post.title}
             author={post.author}
@@ -49,7 +57,7 @@ class Blog extends Component {
         return (
             <div>
                 <section className="Posts">
-                    {!posts.length?<span style={{color:'#ccc',margin:'20px'}} >Loading Post ...</span>:posts}
+                    {this.state.error?<p style={{textAlign:'center',color:'red'}}  >Something went wrong!</p>:(!posts.length?<span style={{color:'#ccc',margin:'20px'}} >Loading Post ...</span>:posts)}
                 </section>
                 <section>
                     <FullPost postid={this.state.postid} />
