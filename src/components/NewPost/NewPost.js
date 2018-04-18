@@ -1,12 +1,33 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import './NewPost.css';
 
 class NewPost extends Component {
+
     state = {
         title: '',
         content: '',
-        author: 'Max'
+        author: ''
+    }
+
+    componentDidMount(){
+        
+        console.log('[NewPost] componentDidMount ')
+        console.log(this.state);
+        this.initialStateValue = {...this.state};
+
+    }
+
+    savePost = () =>{
+
+        const new_post_object = {...this.state};
+        this.setState(this.initialStateValue);
+        axios.post('https://jsonplaceholder.typicode.com/posts',new_post_object)
+        .then(response=>{
+            console.log(response);
+        });
+
     }
 
     render () {
@@ -19,10 +40,11 @@ class NewPost extends Component {
                 <textarea rows="4" value={this.state.content} onChange={(event) => this.setState({content: event.target.value})} />
                 <label>Author</label>
                 <select value={this.state.author} onChange={(event) => this.setState({author: event.target.value})}>
-                    <option value="Max">Max</option>
-                    <option value="Manu">Manu</option>
+                    <option  value="">Select a Value</option>
+                    <option  value="Max">Max</option>
+                    <option  value="Manu">Manu</option>
                 </select>
-                <button>Add Post</button>
+                <button  onClick={this.savePost} >Add Post</button>
             </div>
         );
     }

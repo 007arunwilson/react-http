@@ -15,12 +15,22 @@ class FullPost extends Component {
 
     // }
 
+
+    deletePostHandler =() => {
+
+        axios.delete('https://jsonplaceholder.typicode.com/posts/'+this.props.postid)
+        .then(response=>{
+            console.log(response);
+        });
+
+    }
+
     componentDidUpdate(){
 
         console.log('[FullPost] Compoenent Did Update Triggered ...');
         console.log(this.props);
-        // if(this.props.id)
-        // {
+        if(this.props.postid)
+        {
 
             if(this.state.post && ( this.state.post.id !== this.props.postid )|| !this.state.post  )
             {
@@ -31,7 +41,7 @@ class FullPost extends Component {
                 })
             }
 
-        // }
+        }
 
 
 
@@ -43,7 +53,7 @@ class FullPost extends Component {
         if(this.props.postid || (this.state.post && this.props.postid !== this.state.post.id ))
         {
             console.log('Loading new post ...');
-            post = <p style={{textAlign:'center'}} >Loading post ....</p>
+            post = <p style={{textAlign:'center',color:'#ccc'}} >Loading post ....</p>
 
         }
 
@@ -56,7 +66,7 @@ class FullPost extends Component {
                     <h1>{this.state.post.title}</h1>
                     <p>{this.state.post.body}</p>
                     <div className="Edit">
-                        <button className="Delete">Delete</button>
+                        <button onClick={this.deletePostHandler} className="Delete">Delete</button>
                     </div>
                 </div>
     

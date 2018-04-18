@@ -15,8 +15,7 @@ class Blog extends Component {
     };
 
     componentDidMount(){
-
-        console.log('Compoenent Did Mount executed ...');
+        
         axios.get('https://jsonplaceholder.typicode.com/posts')
         .then(response=>{
             console.log(response.data);
