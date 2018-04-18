@@ -6,7 +6,6 @@ import './FullPost.css';
 class FullPost extends Component {
 
     state = {
-        postid:null,
         post:null,
     }
 
@@ -20,16 +19,20 @@ class FullPost extends Component {
 
         console.log('[FullPost] Compoenent Did Update Triggered ...');
         console.log(this.props);
+        // if(this.props.id)
+        // {
 
-        if((this.state.post && ( this.state.post.id !== this.props.id ))|| !this.state.post )
-        {
+            if(this.state.post && ( this.state.post.id !== this.props.postid )|| !this.state.post  )
+            {
+    
+                axios.get('https://jsonplaceholder.typicode.com/posts/'+this.props.postid)
+                .then(response => {
+                    this.setState({post:response.data});
+                })
+            }
 
-            axios.get('https://jsonplaceholder.typicode.com/posts/'+this.props.postid)
-            .then(response => {
-                this.setState({post:response.data});
-                
-            })
-        }
+        // }
+
 
 
     }
