@@ -5,17 +5,19 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import axios from 'axios';
 
-axios.interceptors.request.use(request=>{
-    
-    console.log('request data from axios intetrceptor',request);
-    return request;
+const interceptorInstance = axios.interceptors.request.use(request=>{
+                                
+                                console.log('request data from axios intetrceptor',request);
+                                return request;
 
-},error=>{
+                            },error=>{
 
-    console.log('request error from axios interceptor');
-    return Promise.reject(error);
+                                console.log('request error from axios interceptor');
+                                return Promise.reject(error);
 
-})
+                            });
+
+axios.interceptors.request.eject(interceptorInstance);
 
 axios.interceptors.response.use(response=>{
     
