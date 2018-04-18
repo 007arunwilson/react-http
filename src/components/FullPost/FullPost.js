@@ -40,13 +40,14 @@ class FullPost extends Component {
     render () {
         let post = <p style={{textAlign:'center',color:'#9c9c9c'}} > - Please select a Post! - </p>;
 
-        if(this.props.postid)
+        if(this.props.postid || (this.state.post && this.props.postid !== this.state.post.id ))
         {
+            console.log('Loading new post ...');
             post = <p style={{textAlign:'center'}} >Loading post ....</p>
 
         }
 
-        if(this.state.post)
+        if(this.state.post && ( this.state.post.id == this.props.postid ))
         {
 
 
