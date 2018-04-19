@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from '../../axiosInstance';
+import {Route} from 'react-router-dom';
 
 import Posts from './Posts/Posts';
 import './Blog.css';
@@ -18,8 +19,11 @@ class Blog extends Component {
                         </ul>
                     </nav>
                 </header>
+                
+                <Route path="/" exact render={()=><h1>Home base path</h1> } />
 
-                <Posts/>
+                <Route path="/" render={()=><h1>Home base 2nd one</h1> } />
+
             </div>
         );
     }
