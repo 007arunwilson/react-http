@@ -29,7 +29,7 @@ class Blog extends Component {
                 <Route path="/" render={()=><h1>Home base 2nd one</h1> } /> */}
 
                 <Route path="/" exact component={Posts} />
-                <Route path="/new-post" exact component={Newpost} />
+                <Route path="/new-post" component={Newpost} />
 
             </div>
         );

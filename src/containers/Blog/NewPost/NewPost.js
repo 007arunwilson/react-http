@@ -14,6 +14,7 @@ class NewPost extends Component {
     componentDidMount(){
         
         console.log('[NewPost] componentDidMount ')
+        console.log('[NewPost] props',this.props);
         console.log(this.state);
         this.initialStateValue = {...this.state};
 

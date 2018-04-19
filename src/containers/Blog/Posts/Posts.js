@@ -12,6 +12,8 @@ class Posts extends Component {
 
     componentDidMount() {
 
+        console.log('[Posts] props',this.props);
+
         axios.get('/posts')
             .then(response => {
                 let resposne_data = response.data;
