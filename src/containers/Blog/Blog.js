@@ -54,7 +54,15 @@ class Blog extends Component {
             />);
 
         return (
-            <div>
+            <div className="Blog" >
+                <header>
+                    <nav>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/new-post">New Post</a></li>
+                        </ul>
+                    </nav>
+                </header>
                 <section className="Posts">
                     {this.state.error?<p style={{textAlign:'center',color:'red'}}  >Something went wrong!</p>:(!posts.length?<span style={{color:'#ccc',margin:'20px'}} >Loading Post ...</span>:posts)}
                 </section>
