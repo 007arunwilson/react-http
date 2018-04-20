@@ -24,7 +24,6 @@ class Blog extends Component {
                             }}>New post</Link></li>
                             <li><Link to={{
                                 pathname:"/about-blog",
-                                hash:"#somehash"
                             }}>About post</Link>
                             </li>
                         </ul>
