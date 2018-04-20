@@ -48,6 +48,7 @@ class Posts extends Component {
             title={post.title}
             author={post.author}
             key={post.id}
+            {...this.props}
             clicked={() => { this.onPostSelectionHandler(post.id) }}
         />);
 
