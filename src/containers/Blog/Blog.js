@@ -18,6 +18,7 @@ class Blog extends Component {
                         <ul>
                             <li><NavLink
                              to="/"
+                             exact
                              >Home</NavLink></li>
                             <li><NavLink to={{
                                 pathname: '/new-post',
