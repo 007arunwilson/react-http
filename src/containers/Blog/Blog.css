@@ -16,6 +16,6 @@
     text-align: center;
 }
 
-.Blog a:hover,.Blog a:active {
+.Blog a:hover,.Blog a:active,.Blog a:hover,.Blog a.active {
     color:#DE6E00;
 }

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from '../../axiosInstance';
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 
 import Posts from './Posts/Posts';
 import Newpost from './NewPost/NewPost';
@@ -16,15 +16,17 @@ class Blog extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to={{
+                            <li><NavLink
+                             to="/"
+                             >Home</NavLink></li>
+                            <li><NavLink to={{
                                 pathname: '/new-post',
                                 hash: '#_hash',
                                 search: '?q_term=lorem'
-                            }}>New post</Link></li>
-                            <li><Link to={{
+                            }}>New post</NavLink></li>
+                            <li><NavLink to={{
                                 pathname:"/about-blog",
-                            }}>About post</Link>
+                            }}>About post</NavLink>
                             </li>
                         </ul>
                     </nav>
