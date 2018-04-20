@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from '../../../axiosInstance';
+import {Link} from 'react-router-dom';
 
 import Post from '../../../components/Post/Post';
 import './Posts.css';
@@ -12,7 +13,7 @@ class Posts extends Component {
 
     componentDidMount() {
 
-        console.log('[Posts] props',this.props);
+        console.log('[Posts] props', this.props);
 
         axios.get('/posts')
             .then(response => {
@@ -44,12 +45,13 @@ class Posts extends Component {
 
     render() {
 
-        let posts = this.state.posts.map(post => <Post
-            title={post.title}
-            author={post.author}
-            key={post.id}
-            clicked={() => { this.onPostSelectionHandler(post.id) }}
-        />);
+        let posts = this.state.posts.map(post => <Link key={post.id} to={'/'+post.id} >
+            <Post
+                title={post.title}
+                author={post.author}
+                clicked={() => { this.onPostSelectionHandler(post.id) }}
+            />
+        </Link>);
 
         return (
             <section className="Posts">

@@ -4,6 +4,7 @@ import { Route, NavLink } from 'react-router-dom';
 
 import Posts from './Posts/Posts';
 import Newpost from './NewPost/NewPost';
+import Fullpost from './FullPost/FullPost';
 import Aboutblog from './AboutBlog/AboutBlog';
 import './Blog.css';
 
@@ -45,6 +46,7 @@ class Blog extends Component {
                 <Route path="/" exact component={Posts} />
                 <Route path="/new-post" component={Newpost} />
                 <Route path="/about-blog" exact component={Aboutblog} />
+                <Route path="/:postid" exact component={Fullpost} />
 
             </div>
         );
