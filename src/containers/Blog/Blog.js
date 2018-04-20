@@ -19,14 +19,17 @@ class Blog extends Component {
                             <li><NavLink
                              to="/"
                              exact
+                             activeClassName="active-link"
                              >Home</NavLink></li>
                             <li><NavLink to={{
                                 pathname: '/new-post',
                                 hash: '#_hash',
-                                search: '?q_term=lorem'
+                                search: '?q_term=lorem',
+                                activeClassName:"active-link"
                             }}>New post</NavLink></li>
                             <li><NavLink to={{
                                 pathname:"/about-blog",
+                                activeClassName:"active-link"
                             }}>About post</NavLink>
                             </li>
                         </ul>
