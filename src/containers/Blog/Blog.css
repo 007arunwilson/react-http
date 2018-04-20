@@ -19,3 +19,7 @@
 .Blog a:hover,.Blog a:active,.Blog a:hover,.Blog a.active {
     color:#DE6E00;
 }
+
+.Blog a.active-link {
+    color:#DE6E00;
+}
