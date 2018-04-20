@@ -31,7 +31,6 @@ class Blog extends Component {
                             }}>New post</NavLink></li>
                             <li><NavLink 
                             activeStyle={{textDecoration:'underline'}}
-                            active
                             to={{
                                 pathname:"/about-blog",
                             }}>About post</NavLink>

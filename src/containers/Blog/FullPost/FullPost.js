@@ -18,24 +18,25 @@ class FullPost extends Component {
 
     deletePostHandler =() => {
 
-        axios.delete('/posts/'+this.props.postid)
+        axios.delete('/posts/'+this.props.match.postid)
         .then(response=>{
             console.log(response);
         });
 
     }
 
-    componentDidUpdate(){
+    componentDidMount(){
 
-        console.log('[FullPost] Compoenent Did Update Triggered ...');
-        console.log(this.props);
-        if(this.props.postid)
+        console.log('[FullPost] Compoenent Did Mount Triggered ...');
+        console.log('[FullPost] props ',this.props);
+
+        if(this.props.match.params.postid)
         {
 
-            if(this.state.post && ( this.state.post.id !== this.props.postid )|| !this.state.post  )
+            if(this.state.post && ( this.state.post.id !== this.props.match.params.postid )|| !this.state.post  )
             {
     
-                axios.get('https://jsonplaceholder.typicode.com/posts/'+this.props.postid)
+                axios.get('https://jsonplaceholder.typicode.com/posts/'+this.props.match.params.postid)
                 .then(response => {
                     this.setState({post:response.data});
                 })
@@ -50,14 +51,14 @@ class FullPost extends Component {
     render () {
         let post = <p style={{textAlign:'center',color:'#9c9c9c'}} > - Please select a Post! - </p>;
 
-        if(this.props.postid || (this.state.post && this.props.postid !== this.state.post.id ))
+        if(this.props.match.params.postid || (this.state.post && this.props.match.params.postid !== this.state.post.id ))
         {
             console.log('Loading new post ...');
             post = <p style={{textAlign:'center',color:'#ccc'}} >Loading post ....</p>
 
         }
 
-        if(this.state.post && ( this.state.post.id == this.props.postid ))
+        if(this.state.post && ( this.state.post.id == this.props.match.params.postid ))
         {
 
 
