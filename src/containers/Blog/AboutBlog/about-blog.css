@@ -1,0 +1,4 @@
+.about-blog-page { color:#6F6D6F; padding:20px 80px; }
+.about-blog-page .abp-sub-links {    background: #efefef;    border: 1px solid #ccc;    border-radius: 6px; }
+.about-blog-page .abp-sub-links ul li a { margin:10px; }
+.about-blog-page .abp-sub-links ul { display: inline-block; }
