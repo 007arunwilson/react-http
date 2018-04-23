@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios from '../../../axiosInstance';
-import {Link} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 
 import Post from '../../../components/Post/Post';
+import Fullpost from '../FullPost/FullPost';
 import './Posts.css';
 
 class Posts extends Component {
@@ -40,7 +41,7 @@ class Posts extends Component {
         console.log('Post slected', post_id);
         console.log('Component props : ',this.props);
         let history = this.props.history;
-        history.push('/'+post_id);
+        history.push('posts/'+post_id);
     }
 
 
@@ -54,9 +55,21 @@ class Posts extends Component {
             />);
 
         return (
-            <section className="Posts">
-                {this.state.error ? <p style={{ textAlign: 'center', color: 'red' }}  >Something went wrong!</p> : (!posts.length ? <span style={{ color: '#ccc', margin: '20px' }} >Loading Post ...</span> : posts)}
-            </section>
+            <div>
+                <section className="Posts">
+                    {this.state.error ? <p style={{ textAlign: 'center', color: 'red' }}  >Something went wrong!</p> : (!posts.length ? <span style={{ color: '#ccc', margin: '20px' }} >Loading Post ...</span> : posts)}
+                </section>
+                <Route path={this.props.match.url+'posts/:id'} render={()=>{
+
+                    console.log('Props From Direct Render Function : ',this.props);
+
+                    return (
+                        <p>Something from direct return function ....</p>
+                    );
+
+                }} />
+                <Route path={this.props.match.url+'posts/:postid'} exact component={Fullpost} />
+            </div>
         );
 
 

@@ -25,6 +25,18 @@ class FullPost extends Component {
 
     }
 
+    // componentWillReceiveProps(nextProps,nextState){
+
+    //     console.log('[FullPost] component will recieve props ... ',nextProps,nextState);
+
+    // }
+
+    componentDidUpdate(){
+
+        console.log('[Full post] compoenent did update ... ');
+
+    }
+
     componentDidMount(){
 
         console.log('[FullPost] Compoenent Did Mount Triggered ...');
@@ -35,7 +47,9 @@ class FullPost extends Component {
 
             if(this.state.post && ( this.state.post.id !== this.props.match.params.postid )|| !this.state.post  )
             {
-    
+
+                console.log('Fetching New Post Full Post');
+
                 axios.get('https://jsonplaceholder.typicode.com/posts/'+this.props.match.params.postid)
                 .then(response => {
                     this.setState({post:response.data});
@@ -44,16 +58,16 @@ class FullPost extends Component {
 
         }
 
-
-
     }
 
     render () {
+
+        console.log('[FullPost] render method');
+
         let post = <p style={{textAlign:'center',color:'#9c9c9c'}} > - Please select a Post! - </p>;
 
         if(this.props.match.params.postid || (this.state.post && this.props.match.params.postid !== this.state.post.id ))
         {
-            console.log('Loading new post ...');
             post = <p style={{textAlign:'center',color:'#ccc'}} >Loading post ....</p>
 
         }
@@ -70,7 +84,6 @@ class FullPost extends Component {
                         <button onClick={this.deletePostHandler} className="Delete">Delete</button>
                     </div>
                 </div>
-    
             );
 
         }
