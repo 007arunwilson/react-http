@@ -39,7 +39,7 @@ class Posts extends Component {
         console.log('Post slected', post_id);
         console.log('Component props : ',this.props);
         let history = this.props.history;
-        history.push(this.props.match.url+'posts/'+post_id);
+        history.push(this.props.match.url+'/'+post_id);
     }
 
 
@@ -66,7 +66,7 @@ class Posts extends Component {
                     );
 
                 }} /> */}
-                <Route path={this.props.match.url+'posts/:postid'} exact component={Fullpost} />
+                <Route path={this.props.match.url+'/:postid'} exact component={Fullpost} />
             </div>
         );
 
