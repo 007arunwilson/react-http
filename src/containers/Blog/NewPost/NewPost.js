@@ -10,7 +10,7 @@ class NewPost extends Component {
         title: '',
         content: '',
         author: '',
-        submitted:false
+        //submitted:false
     }
 
     componentDidMount(){
@@ -29,7 +29,8 @@ class NewPost extends Component {
         axios.post('/posts',new_post_object)
         .then(response=>{
             console.log(response);
-            this.setState({submitted:true})
+            //this.setState({submitted:true})
+            this.props.history.push('/posts');
         });
 
     }
