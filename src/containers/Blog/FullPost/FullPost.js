@@ -9,11 +9,23 @@ class FullPost extends Component {
         post:null,
     }
 
-    // shouldComponentUpdate(nextProps){
+    loadPostData(){
 
-    //     return this.props.postid!=nextProps.postid;
+        if(this.props.match.params.postid)
+        {
 
-    // }
+            if(this.state.post && ( this.state.post.id != this.props.match.params.postid )|| !this.state.post  )
+            {
+
+                axios.get('https://jsonplaceholder.typicode.com/posts/'+this.props.match.params.postid)
+                .then(response => {
+                    this.setState({post:response.data});
+                })
+            }
+
+        }
+
+    }
 
 
     deletePostHandler =() => {
@@ -25,38 +37,15 @@ class FullPost extends Component {
 
     }
 
-    // componentWillReceiveProps(nextProps,nextState){
-
-    //     console.log('[FullPost] component will recieve props ... ',nextProps,nextState);
-
-    // }
-
     componentDidUpdate(){
 
-        console.log('[Full post] compoenent did update ... ');
+        this.loadPostData();
 
     }
 
     componentDidMount(){
 
-        console.log('[FullPost] Compoenent Did Mount Triggered ...');
-        console.log('[FullPost] props ',this.props);
-
-        if(this.props.match.params.postid)
-        {
-
-            if(this.state.post && ( this.state.post.id !== this.props.match.params.postid )|| !this.state.post  )
-            {
-
-                console.log('Fetching New Post Full Post');
-
-                axios.get('https://jsonplaceholder.typicode.com/posts/'+this.props.match.params.postid)
-                .then(response => {
-                    this.setState({post:response.data});
-                })
-            }
-
-        }
+        this.loadPostData();
 
     }
 

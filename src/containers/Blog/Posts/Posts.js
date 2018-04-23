@@ -14,8 +14,6 @@ class Posts extends Component {
 
     componentDidMount() {
 
-        console.log('[Posts] props', this.props);
-
         axios.get('/posts')
             .then(response => {
                 let resposne_data = response.data;
@@ -41,7 +39,7 @@ class Posts extends Component {
         console.log('Post slected', post_id);
         console.log('Component props : ',this.props);
         let history = this.props.history;
-        history.push('posts/'+post_id);
+        history.push(this.props.match.url+'posts/'+post_id);
     }
 
 
@@ -59,7 +57,7 @@ class Posts extends Component {
                 <section className="Posts">
                     {this.state.error ? <p style={{ textAlign: 'center', color: 'red' }}  >Something went wrong!</p> : (!posts.length ? <span style={{ color: '#ccc', margin: '20px' }} >Loading Post ...</span> : posts)}
                 </section>
-                <Route path={this.props.match.url+'posts/:id'} render={()=>{
+                {/* <Route path={this.props.match.url+'posts/:id'} render={()=>{
 
                     console.log('Props From Direct Render Function : ',this.props);
 
@@ -67,7 +65,7 @@ class Posts extends Component {
                         <p>Something from direct return function ....</p>
                     );
 
-                }} />
+                }} /> */}
                 <Route path={this.props.match.url+'posts/:postid'} exact component={Fullpost} />
             </div>
         );
