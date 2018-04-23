@@ -45,6 +45,8 @@ class FullPost extends Component {
 
     componentDidMount(){
 
+        console.log('[Fullpost] props : ',this.props);
+
         this.loadPostData();
 
     }

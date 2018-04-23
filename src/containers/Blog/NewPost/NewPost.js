@@ -14,6 +14,8 @@ class NewPost extends Component {
     }
 
     componentDidMount(){
+
+        if(!this.props.auth) this.props.history.replace('/');
         
         console.log('[NewPost] componentDidMount ')
         console.log('[NewPost] props',this.props);

@@ -43,7 +43,7 @@ class Blog extends Component {
                 {/* <Route path="/" exact render={()=><h1>Home base path</h1> } />
                 <Route path="/" render={()=><h1>Home base 2nd one</h1> } /> */}
                 <Switch>
-                    {this.state.auth==true?<Route path="/new-post" component={Newpost} />:null}
+                    <Route path="/new-post" render={((props)=><Newpost {...props} auth={this.state.auth} />)}/>
                     <Route path="/about-blog" exact component={Aboutblog} />
                     <Route path="/posts" component={Posts} />
                     <Redirect from="/" to="/posts" />
