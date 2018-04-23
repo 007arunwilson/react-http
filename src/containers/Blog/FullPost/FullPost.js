@@ -18,7 +18,7 @@ class FullPost extends Component {
 
     deletePostHandler =() => {
 
-        axios.delete('/posts/'+this.props.match.postid)
+        axios.delete('/posts/'+this.props.match.params.postid)
         .then(response=>{
             console.log(response);
         });

@@ -38,20 +38,20 @@ class Posts extends Component {
     onPostSelectionHandler = (post_id) => {
 
         console.log('Post slected', post_id);
-        this.setState({ postid: post_id });
-
+        console.log('Component props : ',this.props);
+        let history = this.props.history;
+        history.push('/'+post_id);
     }
 
 
     render() {
 
-        let posts = this.state.posts.map(post => <Link key={post.id} to={'/'+post.id} >
-            <Post
+        let posts = this.state.posts.map(post => <Post
+                key={post.id}
                 title={post.title}
                 author={post.author}
                 clicked={() => { this.onPostSelectionHandler(post.id) }}
-            />
-        </Link>);
+            />);
 
         return (
             <section className="Posts">

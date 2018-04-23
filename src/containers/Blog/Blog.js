@@ -41,8 +41,8 @@ class Blog extends Component {
 
                 {/* <Route path="/" exact render={()=><h1>Home base path</h1> } />
                 <Route path="/" render={()=><h1>Home base 2nd one</h1> } /> */}
+                <Route path="/" exact component={Posts} />
                 <Switch>
-                    <Route path="/" exact component={Posts} />
                     <Route path="/new-post" component={Newpost} />
                     <Route path="/about-blog" exact component={Aboutblog} />
                     <Route path="/:postid" exact component={Fullpost} />
