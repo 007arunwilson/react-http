@@ -9,6 +9,8 @@ import './Blog.css';
 
 class Blog extends Component {
 
+    state = {auth:false};
+
     render() {
 
         return (
@@ -41,12 +43,14 @@ class Blog extends Component {
                 {/* <Route path="/" exact render={()=><h1>Home base path</h1> } />
                 <Route path="/" render={()=><h1>Home base 2nd one</h1> } /> */}
                 <Switch>
-                    <Route path="/new-post" component={Newpost} />
+                    {this.state.auth==true?<Route path="/new-post" component={Newpost} />:null}
                     <Route path="/about-blog" exact component={Aboutblog} />
                     <Route path="/posts" component={Posts} />
                     <Redirect from="/" to="/posts" />
                     {/* <Route path="/" exact component={Posts} /> */}
                 </Switch>
+
+                <button onClick={()=>{ this.setState({'auth':true}); }} >Set Auth</button>
 
             </div>
         );
